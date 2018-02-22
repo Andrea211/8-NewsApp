@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_view">150dp</dimen>
+    <dimen name="margin_8_dp">8dp</dimen>
+    <dimen name="pading">16dp</dimen>
+
+    <dimen name="title_size">16sp</dimen>
+    <dimen name="news_size">12sp</dimen>
+    <dimen name="date_size">12sp</dimen>
+    <dimen name="read_more_size">20sp</dimen>
+
+</resources>

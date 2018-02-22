@@ -21,14 +21,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<List<News>>{
+public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<List<News>> {
 
     private static final String LOG_TAG = NewsActivity.class.getName();
 
     // URL for the news data
-    private static final String API_BASE_URL = "http://content.guardianapis.com/search?q=";
-    private static final String API_SEARCH_URL = "https://content.guardianapis.com/search?section=";
-
+    private static final String API_SEARCH_URL = "https://content.guardianapis.com/search?";
+    //private static final String api-key =api-key=36a5c86b-ddca-470c-a2be-5ebe49f0d25e
     // Constant value for the news loader ID. We can choose any integer.
     // This really only comes into play if you're using multiple loaders.
     private static final int NEWS_LOADER_ID = 1;
@@ -59,9 +58,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         // Set an item click listener on the ListView, which sends an intent to a web browser
         // to open a website with more information about selected news
-        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                 // Find the current news that was clicked on
                 News currentNews = mAdapter.getItem(position);
@@ -84,7 +83,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         // If there's a network connection, fetch data
-        if (networkInfo != null && networkInfo.isConnected()){
+        if (networkInfo != null && networkInfo.isConnected()) {
             // Get a reference to the LoaderManager, in order to interact with loaders
             android.app.LoaderManager loaderManager = getLoaderManager();
 
@@ -104,6 +103,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        getLoaderManager().restartLoader(NEWS_LOADER_ID, null, this);
+    }
+
+
+    @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -119,10 +125,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         Uri baseUri = Uri.parse(API_SEARCH_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
-        uriBuilder.appendQueryParameter("q", sectionChosen);
-        uriBuilder.appendQueryParameter("order-by", orderBy);
+        uriBuilder.appendQueryParameter("api-key", "test");
+        uriBuilder.appendQueryParameter("q", sectionChosen.trim().toLowerCase());
+        uriBuilder.appendQueryParameter("orderby", orderBy);
 
-        return new NewsLoader(this, uriBuilder.toString());
+        String myNewUrl = uriBuilder.toString();
+        return new NewsLoader(this, myNewUrl);
+
     }
 
     @Override

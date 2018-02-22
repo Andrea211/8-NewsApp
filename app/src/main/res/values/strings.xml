@@ -24,9 +24,21 @@
 
     <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
     <string name="settings_order_by_section_name_label">Section</string>
-    <string name="settings_order_by_section_name_value" translatable="false">sectionName</string>
+    <string name="settings_order_by_section_name_value" translatable="false">relevance</string>
 
     <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
     <string name="settings_order_by_most_recent_label">Most Recent</string>
-    <string name="settings_order_by_most_recent_value" translatable="false">time</string>
+    <string name="settings_order_by_most_recent_value" translatable="false">relevance</string>
+
+    <string name="description_news_image">news image</string>
+
+    <string name="search_view_hint">Enter a topic</string>
+
+    <string name="description_magnifying_glass_image">magnifying glass</string>
+
+    <string name="sample_title">Sample title</string>
+    <string name="sample_news">Menus are a common user interface component in many types of
+        applications. To provide a familiar and consistent user experience, you should use the Menu
+        APIs to present user actions and other options in your activities.</string>
+    <string name="read_more">Read more</string>
 </resources>

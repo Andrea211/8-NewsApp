@@ -21,28 +21,37 @@ public class News {
     /**
      * Constructs a new {@Link News} object.
      *
-     * @param webTitle is the title of the news
-     * @param sectionName is the name of the category of the news (eg. politics, culture)
+     * @param webTitle        is the title of the news
+     * @param sectionName     is the name of the category of the news (eg. politics, culture)
      * @param publicationDate is the time of the publication of the news
-     * @param url is the website URL where is a news
+     * @param url             is the website URL where is a news
      */
-    public News(String webTitle, String sectionName, String publicationDate, String url){
+    public News(String webTitle, String sectionName, String publicationDate, String url) {
         mWebTitle = webTitle;
         mSectionName = sectionName;
         mPublicationDate = publicationDate;
         mUrl = url;
+
     }
 
     // Returns the title of the news
-    public String getWebTitle() { return mWebTitle; }
+    public String getWebTitle() {
+        return mWebTitle;
+    }
 
     // Returns the section name of the news
-    public String getSectionName() { return mSectionName; }
+    public String getSectionName() {
+        return mSectionName;
+    }
 
     // Returns the publication date of the news
-    public String getPublicationDate() { return  mPublicationDate; }
+    public String getPublicationDate() {
+        return mPublicationDate;
+    }
 
     // Returns the website url of the news
-    public String getUrl() { return mUrl; }
+    public String getUrl() {
+        return mUrl;
+    }
 
 }

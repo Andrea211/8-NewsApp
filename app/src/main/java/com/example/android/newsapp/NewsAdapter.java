@@ -25,7 +25,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
      * Constructs a new {@link NewsAdapter}.
      *
      * @param context of the app
-     * @param news is the list of news, which is the data source of the adapter
+     * @param news    is the list of news, which is the data source of the adapter
      */
     public NewsAdapter(Context context, List<News> news) {
         super(context, 0, news);
@@ -71,14 +71,15 @@ public class NewsAdapter extends ArrayAdapter<News> {
         String date;
         String time;
 
-            // Split the string into different parts (as an array of Strings)
-            // based on the "T" text. We expect an array of 2 Strings, where
-            // the first String will be "2017-04-18" and the second String will be "17:20:59".
-            String[] parts = originalDate.split(PUBLICATION_DATE_SEPARATOR);
-            // Date should be "2017-04-18"
-            date = parts[0];
-            // Time should be "17:20:59"
-            time = parts[1];
+        // Split the string into different parts (as an array of Strings)
+        // based on the "T" text. We expect an array of 2 Strings, where
+        // the first String will be "2017-04-18" and the second String will be "17:20:59".
+        String[] parts = originalDate.split(PUBLICATION_DATE_SEPARATOR);
+        // Date should be "2017-04-18"
+        date = parts[0];
+        // Time should be "17:20:59"
+        time = parts[1];
+        time = time.substring(0, time.length() - 1);
 
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
